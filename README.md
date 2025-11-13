@@ -412,7 +412,7 @@ For deep philosophical exploration, see [`docs/ADD_PHILOSOPHY.md`](docs/ADD_PHIL
 - `ADD_PHILOSOPHY.md` - Framework history and philosophy
 
 **External Resources**:
-- [Dragos Roua's Blog](https://dragosroua.com/assess-decide-do/) - Original framework writing
+- [Dragos Roua's Blog](https://dragosroua.com/assess-decide-do-framework/) - Original framework writing
 - [addTaskManager](https://itunes.apple.com/app/apple-store/id1492487688?mt=8) - iOS/macOS app implementation
 - [ADD MCP Server](https://github.com/dragosroua/addtaskmanager-mcp-server) - Claude Desktop integration
 
