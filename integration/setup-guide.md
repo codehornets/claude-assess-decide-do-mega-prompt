@@ -62,8 +62,17 @@ Choose the integration level that matches your needs:
    ```
    Or download as ZIP from GitHub
 
-2. **Locate ADD_FRAMEWORK_MEGAPROMPT.md**
-   File location: `docs/ADD_FRAMEWORK_MEGAPROMPT.md`
+2. **Choose and Locate Your Mega Prompt**
+
+   **Option A: Generic Version** (recommended for most users)
+   - File: `docs/ADD_FRAMEWORK_MEGAPROMPT.md`
+   - Clean ADD framework without user-specific context
+
+   **Option B: Personalized Version** (advanced)
+   - File: `docs/ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md`
+   - Contains user context section
+   - Edit the "INTEGRATION WITH USER CONTEXT" section with your own background
+   - Useful if you want Claude to understand your specific relationship with ADD
 
 3. **Start Your Conversation**
    Begin any Claude conversation with:
@@ -97,9 +106,13 @@ Choose the integration level that matches your needs:
    ```bash
    # Create ADD directory in your project
    mkdir -p your-project/.claude-add
-   
+
    # Copy essential files
+   # Choose generic version OR personalized version (not both)
    cp docs/ADD_FRAMEWORK_MEGAPROMPT.md your-project/.claude-add/
+   # OR for personalized version (edit USER CONTEXT section first):
+   # cp docs/ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md your-project/.claude-add/ADD_FRAMEWORK_MEGAPROMPT.md
+
    cp docs/ADD_QUICK_REFERENCE.md your-project/.claude-add/
    ```
 

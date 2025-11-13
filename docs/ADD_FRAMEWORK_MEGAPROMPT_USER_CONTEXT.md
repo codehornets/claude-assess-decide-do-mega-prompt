@@ -1,3 +1,13 @@
+---
+VARIANT: Personalized ADD Framework Mega Prompt with User Context
+USE CASE: Template for adding your personal ADD background/context
+INSTRUCTIONS:
+- This file contains a user-specific context section at the end
+- Currently configured for Dragos Roua (framework creator)
+- To personalize: Edit the "INTEGRATION WITH USER CONTEXT" section with your information
+- If you don't need personalization, use ADD_FRAMEWORK_MEGAPROMPT.md instead
+---
+
 # ADD (Assess-Decide-Do) Framework Integration - Mega Prompt
 
 ## CORE IDENTITY

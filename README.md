@@ -127,6 +127,25 @@ context_files:
   - path/to/ADD_FRAMEWORK_MEGAPROMPT.md
 ```
 
+### Choosing the Right Mega Prompt
+
+Two versions are available:
+
+**Generic Version** (`ADD_FRAMEWORK_MEGAPROMPT.md`):
+- For most users
+- Clean ADD framework integration
+- No user-specific context
+- **Recommended starting point**
+
+**User Context Version** (`ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md`):
+- Contains personalized user context section
+- Currently configured for framework creator (Dragos Roua)
+- Can be edited to include your own background/relationship with ADD
+- Use if you want Claude to understand your specific ADD journey
+- **Example template** for creating personalized variants
+
+To personalize: Edit the "INTEGRATION WITH USER CONTEXT" section at the end of the file with your own information.
+
 ### Deep Integration
 
 For comprehensive implementation, see:
@@ -174,10 +193,11 @@ For comprehensive implementation, see:
 claude-assess-decide-do-mega-prompt/
 ├── README.md                          # This file
 ├── docs/
-│   ├── ADD_FRAMEWORK_MEGAPROMPT.md   # Core prompt (ESSENTIAL)
-│   ├── ADD_TECHNICAL_INTEGRATION.md  # Deep technical guide
-│   ├── ADD_QUICK_REFERENCE.md        # Practical quick reference
-│   └── ADD_PHILOSOPHY.md             # Framework philosophy & history
+│   ├── ADD_FRAMEWORK_MEGAPROMPT.md              # Core prompt (ESSENTIAL)
+│   ├── ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md # Personalized variant with user context
+│   ├── ADD_TECHNICAL_INTEGRATION.md             # Deep technical guide
+│   ├── ADD_QUICK_REFERENCE.md                   # Practical quick reference
+│   └── ADD_PHILOSOPHY.md                        # Framework philosophy & history
 ├── examples/
 │   ├── .claude-example               # Project-level integration example
 │   ├── custom-instructions.txt       # Claude settings example
@@ -383,7 +403,8 @@ For deep philosophical exploration, see [`docs/ADD_PHILOSOPHY.md`](docs/ADD_PHIL
 ## Resources
 
 **Core Documents** (in `/docs`):
-- `ADD_FRAMEWORK_MEGAPROMPT.md` - The essential integration prompt
+- `ADD_FRAMEWORK_MEGAPROMPT.md` - The essential integration prompt (generic version)
+- `ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md` - Personalized variant (for framework creator or customization template)
 - `ADD_TECHNICAL_INTEGRATION.md` - Technical implementation guide
 - `ADD_QUICK_REFERENCE.md` - Quick lookup for realm patterns
 - `ADD_PHILOSOPHY.md` - Framework history and philosophy

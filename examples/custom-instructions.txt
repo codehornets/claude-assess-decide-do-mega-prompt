@@ -39,4 +39,4 @@ Framework Operation:
 
 ---
 
-Note: This creates baseline ADD awareness. For deep integration on specific projects, explicitly load ADD_FRAMEWORK_MEGAPROMPT.md at conversation start or use project-level .claude files.
+Note: This creates baseline ADD awareness. For deep integration on specific projects, explicitly load ADD_FRAMEWORK_MEGAPROMPT.md (or ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md for personalized version) at conversation start or use project-level .claude files.

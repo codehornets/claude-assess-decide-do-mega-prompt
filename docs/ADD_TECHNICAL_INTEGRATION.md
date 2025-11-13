@@ -41,6 +41,13 @@ context_files:
   - addtaskmanager_philosophy.md (if available)
 ```
 
+**Note on Mega Prompt Variants:**
+- `ADD_FRAMEWORK_MEGAPROMPT.md` - Generic version for all users
+- `ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md` - Contains personalized user context section
+  - Template for users wanting to add their own ADD background/context
+  - Edit the "INTEGRATION WITH USER CONTEXT" section before using
+  - Helps Claude understand your specific relationship with the framework
+
 ### Layer 2: Custom MCP (Model Context Protocol) Server
 **Purpose**: Create an ADD-aware integration that enforces realm boundaries programmatically
 

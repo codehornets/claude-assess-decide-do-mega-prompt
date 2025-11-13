@@ -384,3 +384,7 @@ This framework integration will evolve through use. Claude should:
 - Identify areas where ADD integration could deepen
 - Suggest refinements based on interaction patterns
 - Remain open to user's evolving understanding of their own framework
+
+---
+
+**Note**: A personalized variant of this mega prompt exists (`ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md`) that includes a user context section. This can be customized with your own ADD background and relationship with the framework.
