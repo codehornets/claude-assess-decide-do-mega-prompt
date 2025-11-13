@@ -58,7 +58,7 @@ Choose the integration level that matches your needs:
 
 1. **Clone or Download This Repository**
    ```bash
-   git clone https://github.com/dragosroua/add-claude-framework.git
+   git clone https://github.com/dragosroua/claude-assess-decide-do-mega-prompt.git
    ```
    Or download as ZIP from GitHub
 
@@ -89,8 +89,8 @@ Choose the integration level that matches your needs:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/dragosroua/add-claude-framework.git
-   cd add-claude-framework
+   git clone https://github.com/dragosroua/claude-assess-decide-do-mega-prompt.git
+   cd claude-assess-decide-do-mega-prompt
    ```
 
 2. **Copy Files to Your Project**

@@ -27,4 +27,4 @@ context_files:
 
 # Note: Adjust context_files paths based on your project structure
 # If ADD documents are in a parent directory, use:
-# - ../add-claude-framework/docs/ADD_FRAMEWORK_MEGAPROMPT.md
+# - ../claude-assess-decide-do-mega-prompt/docs/ADD_FRAMEWORK_MEGAPROMPT.md

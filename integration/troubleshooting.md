@@ -466,7 +466,7 @@ Path resolution issues.
    ```yaml
    context_files:
      - .claude-add/ADD_FRAMEWORK_MEGAPROMPT.md
-     # NOT: ../add-claude-framework/docs/...
+     # NOT: ../claude-assess-decide-do-mega-prompt/docs/...
    ```
 
 2. **Verify Files Exist**:
@@ -479,7 +479,7 @@ Path resolution issues.
    Don't reference external repository - copy files into project:
    ```bash
    mkdir -p .claude-add
-   cp ~/add-claude-framework/docs/*.md .claude-add/
+   cp ~/claude-assess-decide-do-mega-prompt/docs/*.md .claude-add/
    ```
 
 ### ADD documents not updating

@@ -171,7 +171,7 @@ For comprehensive implementation, see:
 ## Repository Structure
 
 ```
-add-claude-framework/
+claude-assess-decide-do-mega-prompt/
 ├── README.md                          # This file
 ├── docs/
 │   ├── ADD_FRAMEWORK_MEGAPROMPT.md   # Core prompt (ESSENTIAL)

@@ -243,7 +243,7 @@ An execution phase might be 10% Assess, 10% Decide, 80% Do—and that's perfectl
 
 The question isn't "Am I spending equal time in each realm?" but "Is my current realm distribution appropriate for what I'm working on?"
 
-**Zen Status** (from addTaskManager) measures this: the count of items in each realm. High Zen = balanced distribution. Low Zen = bottlenecks in one realm, emptiness in others.
+**Zen Status** (from addTaskManager) using a few dozens of metrics, including the total number in each realm, the rate of items moving to and from each realm, the rate of completing / deleting items, the Zen Status was created as a way to identify the current state. There are currently 50 "bands" or layers of potential Zen Statuses, from balanced to imbalanced.
 
 ## ADD as Life Philosophy
 
@@ -312,7 +312,7 @@ The philosophy is simple. The practice is deep. The results are profound.
 
 **Resources**:
 - [Original ADD Blog Posts](https://www.dragosroua.com/assess-decide-do/)
-- [addTaskManager App](https://addtaskmanager.com)
-- [GitHub Repository](https://github.com/dragosroua/add-claude-framework)
+- [addTaskManager App](https://itunes.apple.com/app/apple-store/id1492487688?mt=8)
+- [GitHub Repository](https://github.com/dragosroua/claude-assess-decide-do-mega-prompt/tree/main)
 
 **Author**: Dragos Roua, creator of the ADD framework and addTaskManager app. Location-independent entrepreneur, iOS developer, and writer exploring the intersection of productivity, philosophy, and technology.
