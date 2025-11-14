@@ -64,6 +64,33 @@ The framework shapes:
 
 **Your entire working environment** supports ADD naturally.
 
+### Level 4: Flow Status Observability (Optional)
+
+For users who want visible pattern tracking:
+
+**Flow Status Extension adds:**
+- **Session-based tracking** of realm patterns and transitions
+- **Visual status bar** showing current realm and flow quality
+- **Dynamic status messages** generated contextually (not pre-defined)
+- **Neutral-observational tone** - informative, not directive
+- **Toggle control** - enable/disable via natural language anytime
+
+**Example status bars:**
+```
+[ADD Flow: 🔴+ Assess | Deep exploration - 8 data points gathered]
+[ADD Flow: 🟠? Decide | Values surfacing - 2 clear criteria emerging]
+[ADD Flow: 🟢- Do | Clean execution - 3 completions, new liveline created]
+```
+
+**Visual system mirrors addTaskManager:**
+- 🔴+ ASSESS - Red (stop), Plus (adding data), Exploring
+- 🟠? DECIDE - Orange (prepare), Question mark (choosing), Evaluating
+- 🟢- DO - Green (go), Minus (removing tasks), Executing
+
+**This is completely optional.** Core ADD awareness works perfectly without it. Load `ADD_FLOW_STATUS_EXTENSION.md` only if you want visible metrics.
+
+See [`docs/ADD_MODULAR_ARCHITECTURE.md`](docs/ADD_MODULAR_ARCHITECTURE.md) for configuration options.
+
 ## How It Works: The User Experience
 
 ### The Cognitive Dimension
@@ -129,21 +156,46 @@ context_files:
   - path/to/ADD_FRAMEWORK_MEGAPROMPT.md
 ```
 
-### Choosing the Right Mega Prompt
+### Choosing Your Configuration Level
 
-Two versions are available:
+The ADD framework is **modular** - choose the experience level you need:
 
-**Generic Version** (`ADD_FRAMEWORK_MEGAPROMPT.md`):
-- For most users
-- Clean ADD framework integration
-- No user-specific context
-- **Recommended starting point**
+#### Core Framework Only (Recommended Start)
+
+**Files:** `ADD_FRAMEWORK_MEGAPROMPT.md`
+**Experience:**
+- Implicit ADD awareness
+- Realm detection and guidance
+- No visible metrics
+
+**Best for:** Learning ADD principles, preferring subtle support
+
+#### Core + Flow Status Observability
+
+**Files:** `ADD_FRAMEWORK_MEGAPROMPT.md` + `ADD_FLOW_STATUS_EXTENSION.md`
+**Experience:**
+- Everything from core framework
+- Visible status bar: `[ADD Flow: 🔴+ Assess | Deep exploration - 8 data points]`
+- Session-based pattern tracking
+- Toggleable on/off via natural language
+
+**Best for:** Self-awareness development, learning your flow patterns
+
+**Configuration example:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+```
+
+See [`docs/ADD_MODULAR_ARCHITECTURE.md`](docs/ADD_MODULAR_ARCHITECTURE.md) for complete configuration options.
+
+#### Personalized Variants
 
 **User Context Version** (`ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md`):
 - Contains personalized user context section
 - Currently configured for framework creator (Dragos Roua)
 - Can be edited to include your own background/relationship with ADD
-- Use if you want Claude to understand your specific ADD journey
 - **Example template** for creating personalized variants
 
 To personalize: Edit the "INTEGRATION WITH USER CONTEXT" section at the end of the file with your own information.
@@ -196,12 +248,17 @@ claude-assess-decide-do-mega-prompt/
 ├── README.md                          # This file
 ├── docs/
 │   ├── ADD_FRAMEWORK_MEGAPROMPT.md              # Core prompt (ESSENTIAL)
+│   ├── ADD_FLOW_STATUS_EXTENSION.md             # Observability extension (OPTIONAL)
+│   ├── ADD_MODULAR_ARCHITECTURE.md              # Configuration guide
 │   ├── ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md # Personalized variant with user context
 │   ├── ADD_TECHNICAL_INTEGRATION.md             # Deep technical guide
 │   ├── ADD_QUICK_REFERENCE.md                   # Practical quick reference
 │   └── ADD_PHILOSOPHY.md                        # Framework philosophy & history
 ├── examples/
-│   ├── .claude-example               # Project-level integration example
+│   ├── .claude-minimal               # Core framework only
+│   ├── .claude-full-observability    # Core + Flow Status ON
+│   ├── .claude-on-demand             # Core + Flow Status OFF (on-demand)
+│   ├── .claude-contextual            # Conditional observability
 │   ├── custom-instructions.txt       # Claude settings example
 │   └── test-scenarios.md             # Scenarios to test integration
 ├── integration/
@@ -406,6 +463,8 @@ For deep philosophical exploration, see [`docs/ADD_PHILOSOPHY.md`](docs/ADD_PHIL
 
 **Core Documents** (in `/docs`):
 - `ADD_FRAMEWORK_MEGAPROMPT.md` - The essential integration prompt (generic version)
+- `ADD_FLOW_STATUS_EXTENSION.md` - Optional observability layer for flow tracking
+- `ADD_MODULAR_ARCHITECTURE.md` - Configuration guide and modular design
 - `ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md` - Personalized variant (for framework creator or customization template)
 - `ADD_TECHNICAL_INTEGRATION.md` - Technical implementation guide
 - `ADD_QUICK_REFERENCE.md` - Quick lookup for realm patterns

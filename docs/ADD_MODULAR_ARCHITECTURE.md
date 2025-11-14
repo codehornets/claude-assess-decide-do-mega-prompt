@@ -1,0 +1,529 @@
+# ADD Framework: Modular Architecture
+
+## Overview
+
+The ADD framework integration for Claude is designed with **modularity as a core principle**. Users can configure their experience from minimal awareness to full observability, choosing exactly which features they need.
+
+## Architecture Layers
+
+```
+┌─────────────────────────────────────────────────┐
+│              User Interaction Layer             │
+│  (Natural language toggles, .claude config)     │
+└────────────────┬────────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────────┐
+│         Optional: Flow Status Extension         │
+│  ┌──────────────────────────────────────────┐  │
+│  │ • Session-based tracking                 │  │
+│  │ • Dynamic status generation              │  │
+│  │ • Visual status bar                      │  │
+│  │ • Toggleable observability               │  │
+│  └──────────────────────────────────────────┘  │
+└────────────────┬────────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────────┐
+│          Core: ADD Framework Awareness          │
+│  ┌──────────────────────────────────────────┐  │
+│  │ • Realm detection (Assess/Decide/Do)     │  │
+│  │ • Imbalance identification               │  │
+│  │ • Response structuring                   │  │
+│  │ • Gentle flow guidance                   │  │
+│  └──────────────────────────────────────────┘  │
+└────────────────┬────────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────────┐
+│            Claude Base Capabilities             │
+│         (Conversation, tool use, etc.)          │
+└─────────────────────────────────────────────────┘
+```
+
+## Configuration Levels
+
+### Level 0: Standard Claude (No ADD)
+
+**What's loaded:** Nothing
+**Experience:** Standard Claude behavior
+**Use case:** Users not interested in ADD framework
+
+```yaml
+# No ADD configuration
+```
+
+### Level 1: Core ADD Awareness
+
+**What's loaded:** `ADD_FRAMEWORK_MEGAPROMPT.md`
+**Experience:**
+- Implicit realm detection
+- Balanced flow guidance
+- Appropriate response structuring
+- No visible metrics
+
+**Use case:** Users who want ADD support without explicit tracking
+
+**Configuration:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+
+instructions: |
+  Operate with ADD framework awareness.
+  Keep observability implicit (no status bar).
+```
+
+**Natural language:**
+```
+Load ADD framework and operate with awareness throughout this conversation.
+```
+
+### Level 2: ADD + Flow Status (Default ON)
+
+**What's loaded:**
+- `ADD_FRAMEWORK_MEGAPROMPT.md`
+- `ADD_FLOW_STATUS_EXTENSION.md`
+
+**Experience:**
+- Everything from Level 1
+- Visible status bar at boundaries
+- Quantified metrics
+- Self-awareness support
+
+**Use case:** Users who want full observability to learn their patterns
+
+**Configuration:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+
+instructions: |
+  Operate with ADD framework awareness.
+  Enable flow status tracking (default ON).
+```
+
+### Level 3: ADD + Flow Status (Default OFF)
+
+**What's loaded:** Same as Level 2
+**Experience:**
+- ADD awareness active
+- Status capability loaded but hidden
+- User can enable on-demand
+
+**Use case:** Users who want observability available but not always visible
+
+**Configuration:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+
+instructions: |
+  Operate with ADD framework awareness.
+  Flow status available but default OFF.
+  User can request: "show flow status"
+```
+
+### Level 4: Contextual Observability
+
+**What's loaded:** Same as Level 2
+**Experience:**
+- ADD awareness always active
+- Status bar appears only in specific contexts
+
+**Use case:** Users who want metrics during complex work, not simple tasks
+
+**Configuration:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+
+instructions: |
+  Operate with ADD framework awareness.
+
+  Enable flow status during:
+  - Architecture decisions
+  - Large refactorings
+  - Multi-file changes
+  - Research tasks
+
+  Disable flow status for:
+  - Quick bug fixes
+  - Single-file edits
+  - Simple questions
+```
+
+## Component Relationships
+
+### Independence
+
+**Core Framework is independent:**
+- Works perfectly without any extensions
+- Provides complete ADD awareness
+- No dependencies on observability layer
+
+**Extensions are optional addons:**
+- Flow Status Extension requires Core Framework
+- But Core Framework doesn't require Flow Status
+- Clean separation of concerns
+
+### Interaction
+
+**When both are loaded:**
+
+**Core Framework provides:**
+- Realm detection logic
+- Pattern recognition
+- Imbalance identification
+
+**Flow Status Extension consumes:**
+- Realm detection results
+- Pattern recognition output
+- Session metrics
+
+**Flow Status Extension provides:**
+- Visible status bar
+- Quantified feedback
+- User-facing metrics
+
+**Core Framework remains unchanged:**
+- Extension doesn't modify core behavior
+- Pure observability layer on top
+
+## Configuration Methods
+
+### Method 1: Project-Level (.claude file)
+
+**Best for:** Consistent behavior across a project
+
+**Location:** Project root `.claude` file
+
+**Examples:**
+
+**Minimal ADD:**
+```yaml
+instructions: |
+  Operate with ADD framework awareness.
+
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+```
+
+**Full observability:**
+```yaml
+instructions: |
+  Operate with ADD framework awareness.
+  Enable flow status tracking.
+
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+```
+
+### Method 2: Custom Instructions
+
+**Best for:** Consistent behavior across all conversations
+
+**Location:** Claude Settings → Custom Instructions
+
+**Example:**
+```
+Framework: Operate with Assess-Decide-Do (ADD) awareness.
+
+Load:
+- ADD_FRAMEWORK_MEGAPROMPT.md (core framework)
+- ADD_FLOW_STATUS_EXTENSION.md (observability)
+
+Flow status: Default ON (I can toggle off if needed)
+```
+
+### Method 3: Conversation Start
+
+**Best for:** One-off conversations, testing, flexibility
+
+**Usage:**
+```
+Load ADD framework with flow status tracking enabled.
+```
+
+Or:
+```
+Load ADD_FRAMEWORK_MEGAPROMPT.md and ADD_FLOW_STATUS_EXTENSION.md.
+Operate with full ADD awareness and observability.
+```
+
+### Method 4: Mid-Conversation Toggle
+
+**Best for:** Dynamic control during work
+
+**Enable observability:**
+```
+"Show flow status"
+"Enable ADD tracking"
+"Turn on the status bar"
+```
+
+**Disable observability:**
+```
+"Hide flow status"
+"Turn off the status bar"
+"Disable observability for now"
+```
+
+**Request one-time status:**
+```
+"Where am I in my flow?"
+"What's my current ADD status?"
+"Show me my realm pattern"
+```
+
+## File Organization
+
+```
+claude-assess-decide-do-mega-prompt/
+├── docs/
+│   ├── ADD_FRAMEWORK_MEGAPROMPT.md              # CORE (Required)
+│   ├── ADD_FLOW_STATUS_EXTENSION.md             # EXTENSION (Optional)
+│   ├── ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md # VARIANT (Optional)
+│   ├── ADD_MODULAR_ARCHITECTURE.md              # This file
+│   ├── ADD_TECHNICAL_INTEGRATION.md
+│   ├── ADD_QUICK_REFERENCE.md
+│   └── ADD_PHILOSOPHY.md
+├── examples/
+│   ├── .claude-minimal                          # Level 1: Core only
+│   ├── .claude-full-observability               # Level 2: Core + Status ON
+│   ├── .claude-on-demand                        # Level 3: Core + Status OFF
+│   └── .claude-contextual                       # Level 4: Conditional status
+```
+
+## Extension Roadmap (Future Possibilities)
+
+The modular architecture enables future extensions:
+
+**Potential Future Extensions:**
+- **ADD_COLLABORATION_EXTENSION** - Multi-user ADD awareness
+- **ADD_LONGTERM_TRACKING** - Cross-session pattern recognition
+- **ADD_DOMAIN_EXTENSIONS** - Specialized ADD for coding, writing, research
+- **ADD_INTEGRATION_HOOKS** - Connect to external tools (addTaskManager MCP, etc.)
+
+**Each extension:**
+- Builds on core framework
+- Remains optional
+- Can be toggled independently
+- Maintains clean separation
+
+## Design Principles
+
+### 1. Core Stability
+
+The base ADD framework (`ADD_FRAMEWORK_MEGAPROMPT.md`) is stable and complete. Extensions don't modify it.
+
+### 2. User Control
+
+Users choose their experience level. No forced features.
+
+### 3. Progressive Enhancement
+
+Start minimal, add observability when wanted. Graceful degradation if extensions removed.
+
+### 4. Clean Interfaces
+
+Extensions consume framework outputs but don't couple tightly. Changes to one don't break the other.
+
+### 5. Natural Language Control
+
+Configuration files set defaults, but users can override anything through conversation.
+
+## Migration Paths
+
+### From No ADD → Core ADD
+
+**Before:**
+```yaml
+# No ADD configuration
+```
+
+**After:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+```
+
+**Impact:** Implicit ADD awareness, no visible changes
+
+### From Core ADD → ADD + Observability
+
+**Before:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+```
+
+**After:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+```
+
+**Impact:** Status bar appears, metrics visible
+
+### From Always-On Status → On-Demand Status
+
+**Before:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+# (Default behavior: ON)
+```
+
+**After:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+
+instructions: |
+  Flow status: Default OFF
+```
+
+**Impact:** Status available but hidden until requested
+
+### From Observability → Core Only
+
+**Before:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+```
+
+**After:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+```
+
+**Impact:** Status bar disappears, ADD awareness remains
+
+## Troubleshooting Configuration
+
+### "I loaded both files but don't see status bar"
+
+**Possible causes:**
+1. Not enough conversation yet (needs 3-5 exchanges)
+2. No natural boundary occurred for status display
+3. Instructions set default OFF
+4. User previously disabled mid-conversation
+
+**Solutions:**
+- Continue conversation, status will appear at realm shift
+- Request explicitly: "Show me flow status"
+- Check .claude file for default OFF setting
+
+### "Status bar appears when I don't want it"
+
+**Solutions:**
+- Say: "Turn off flow status"
+- Remove `ADD_FLOW_STATUS_EXTENSION.md` from context_files
+- Set default OFF in instructions
+
+### "I want status only sometimes"
+
+**Best configuration:**
+```yaml
+context_files:
+  - docs/ADD_FRAMEWORK_MEGAPROMPT.md
+  - docs/ADD_FLOW_STATUS_EXTENSION.md
+
+instructions: |
+  Flow status: Default OFF
+  User can enable on-demand
+```
+
+Then use "show flow status" when you want it.
+
+### "Different projects need different configs"
+
+**Solution:** Use project-specific `.claude` files
+
+**Project A (.claude):**
+```yaml
+# Complex architecture work - always show status
+context_files:
+  - /path/to/ADD_FRAMEWORK_MEGAPROMPT.md
+  - /path/to/ADD_FLOW_STATUS_EXTENSION.md
+```
+
+**Project B (.claude):**
+```yaml
+# Simple maintenance - core only
+context_files:
+  - /path/to/ADD_FRAMEWORK_MEGAPROMPT.md
+```
+
+## Best Practices
+
+### Start Minimal
+
+**Recommendation:** Begin with core framework only
+- Learn ADD principles first
+- Get comfortable with implicit awareness
+- Add observability once you understand the framework
+
+### Experiment with Levels
+
+**Try different configurations:**
+- Week 1: Core only (Level 1)
+- Week 2: Status always ON (Level 2)
+- Week 3: Status on-demand (Level 3)
+- Week 4: Contextual status (Level 4)
+
+**Find what works for you.**
+
+### Project-Specific Configs
+
+**Match configuration to work type:**
+- **Deep work:** Full observability
+- **Quick tasks:** Core only
+- **Learning projects:** Always-on status
+- **Production work:** On-demand status
+
+### Use Natural Language Override
+
+**Don't edit config files mid-session.**
+
+Instead:
+- "Hide status for this conversation"
+- "Show me flow tracking"
+- "Turn off observability temporarily"
+
+**Conversation-level control beats file editing.**
+
+## Summary: Choose Your Experience
+
+| Configuration | Files Loaded | Status Bar | Use Case |
+|--------------|--------------|------------|----------|
+| **No ADD** | None | No | Standard Claude |
+| **Core ADD** | MEGAPROMPT | No | Implicit ADD support |
+| **ADD + Status ON** | MEGAPROMPT + EXTENSION | Yes (default) | Full observability |
+| **ADD + Status OFF** | MEGAPROMPT + EXTENSION | No (available) | On-demand metrics |
+| **Contextual** | MEGAPROMPT + EXTENSION | Conditional | Complex work only |
+
+**The power is in the choice.**
+
+Load what you need. Toggle what you want. The framework adapts to you.
+
+---
+
+**Questions about configuration?**
+
+See:
+- [`ADD_FRAMEWORK_MEGAPROMPT.md`](ADD_FRAMEWORK_MEGAPROMPT.md) - Core framework
+- [`ADD_FLOW_STATUS_EXTENSION.md`](ADD_FLOW_STATUS_EXTENSION.md) - Observability extension
+- [`examples/`](../examples/) - Configuration examples
+- [`integration/setup-guide.md`](../integration/setup-guide.md) - Step-by-step setup
