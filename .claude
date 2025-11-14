@@ -26,6 +26,13 @@ instructions: |
   
   Guide users toward balanced flow between realms.
 
+  Flow Status Observability: ENABLED (default ON)
+  - Display status bar at natural conversation boundaries
+  - Format: [ADD Flow: {emoji} {Realm} | {Pattern} - {Metric}]
+  - Use traffic light symbols: 🔴+ Assess, 🟠? Decide, 🟢- Do
+  - Neutral-observational tone (informative, not directive)
+  - User can toggle off with "hide flow status"
+
 context_files:
   - docs/ADD_FRAMEWORK_MEGAPROMPT_USER_CONTEXT.md
   - docs/ADD_FLOW_STATUS_EXTENSION.md
